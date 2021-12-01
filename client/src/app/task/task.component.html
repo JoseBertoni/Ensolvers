@@ -1,0 +1,25 @@
+<form class="form" (submit)="add(taskTitle.value); taskTitle.value=''">
+  <div class="form-group">
+    <input #taskTitle type="text" class="form-control" placeholder="Nombre de la tarea">
+  </div>
+  <input type="submit" value="Agregar" class="btn btn-success btn-lg btn-block my-3">
+</form>
+
+<table class="table mt-2">
+  <tr *ngFor="let task of tasks">
+    <td class="text-left">
+      <input type="checkbox" class="form-check-input" [checked]="task.completed" (change)="changeStatus(task)">
+      <a (click)="edit(task)">
+        <span *ngIf="task!==editTask">{{task.title}}</span>
+        <input *ngIf="task==editTask" [(ngModel)]="task.title" (blur)="update()" (keyup.enter)="update()">
+      </a>
+    </td>
+    <td class="text-right">
+      <button type="button" class="btn btn-outline-danger" title="Borrar" (click)="delete(task)">Borrar</button>
+    </td>
+  </tr>
+</table>
+
+<div class="card card-body bg-light text-center">
+  <span class="small">Clickea el item para editarlo</span>
+</div>
