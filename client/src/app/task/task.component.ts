@@ -20,7 +20,7 @@ export class TaskComponent implements OnInit {
   }
 
   getTask():void{
-    this.taskService.getTasks().subscribe(tasks => (this.tasks = tasks));
+    this.taskService.getTasks().subscribe(tasks => ( this.tasks = tasks));
   }
 
   add(taskContent: string): void {

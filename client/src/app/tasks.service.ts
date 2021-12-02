@@ -12,7 +12,9 @@ export class TasksService {
   constructor(private http: HttpClient) { }
 
   getTasks(): Observable<Task[]>{
-    return this.http.get<Task[]>(this.url);
+    let prueba = this.http.get<Task[]>(this.url);
+
+    return prueba;
   }
 
   addTask(task: Task): Observable<Task>{
@@ -20,12 +22,13 @@ export class TasksService {
   }
 
   deleteTask(id:string): Observable<{}>{
-    const url = `${this.url} + ${id}`;
+    const url = `${this.url}/${id}`;
+    console.log(url);
     return this.http.delete(url);
   }
 
   updateTask(task: Task): Observable<Task>{
-
-    return this.http.put<Task>(this.url,task);
+    const url = `${this.url}/${task.id}/mark-task`;
+    return this.http.put<Task>(url,task);
   }
 }

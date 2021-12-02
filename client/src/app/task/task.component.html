@@ -8,10 +8,10 @@
 <table class="table mt-2">
   <tr *ngFor="let task of tasks">
     <td class="text-left">
-      <input type="checkbox" class="form-check-input" [checked]="task.completed" (change)="changeStatus(task)">
+      <input type="checkbox" class="form-check-input" [checked]="task.isMarked" (change)="changeStatus(task)">
       <a (click)="edit(task)">
-        <span *ngIf="task!==editTask">{{task.title}}</span>
-        <input *ngIf="task==editTask" [(ngModel)]="task.title" (blur)="update()" (keyup.enter)="update()">
+        <span *ngIf="task!==editTask">{{task.taskContent}}</span>
+        <input *ngIf="task==editTask" [(ngModel)]="task.taskContent" (blur)="update()" (keyup.enter)="update()">
       </a>
     </td>
     <td class="text-right">
